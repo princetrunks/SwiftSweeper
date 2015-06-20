@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  SwiftSweeper
 //
-//  Created by chuck on 9/28/14.
-//  Copyright (c) 2014 Chuck Gaffney. All rights reserved.
+//  Created by chuck on 6/20/15.
+//  Copyright © 2015 Chuck's Anime Shrine. All rights reserved.
 //
 
 import UIKit

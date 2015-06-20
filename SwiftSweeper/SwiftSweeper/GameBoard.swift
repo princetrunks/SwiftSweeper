@@ -1,5 +1,5 @@
 //
-//  TileBoard.swift
+//  GameBoard.swift
 //  SwiftSweeper
 //
 //  Created by Chuck Gaffney on 9/29/14.
@@ -7,7 +7,6 @@
 // game Model logic for the board of Tiles
 
 import Foundation
-
 
 class GameBoard {
     
@@ -18,9 +17,7 @@ class GameBoard {
     }
     
     var boardSize_ = 10
-    
     var totalTiles_ : Int
-    
     var numOfTappedTilesToWin_ : Int?
     
     // 1/mineRandomizer chance of a tile becoming a mine; default is 10
@@ -43,10 +40,10 @@ class GameBoard {
         //2 layer for-loop to create the default 10 X 10 board
         for row in 0 ..< boardSize_ {
             var tilesRow:[Tile] = []
-                for col in 0 ..< boardSize_ {
-                    let tile = Tile(row: row, col: col)
-                    tilesRow.append(tile)
-                }
+            for col in 0 ..< boardSize_ {
+                let tile = Tile(row: row, col: col)
+                tilesRow.append(tile)
+            }
             tiles.append(tilesRow)
         }
         
@@ -69,12 +66,7 @@ class GameBoard {
         case .hard:
             mineRandomizer = 3
             break
-
-         default:
-    
-        mineRandomizer = 10
-    
-            break
+            
         }
     }
     
@@ -106,7 +98,7 @@ class GameBoard {
         //assign this number to each tiles to then be revealed for the player once unlocked
         currentTile.nearbyMines = nearbyMines
     }
-
+    
     
     
     //returns an array of Tile objects that surround the selected Tile; could be 3-8 tiles based on the location of the selected tiles on the board
@@ -119,19 +111,19 @@ class GameBoard {
         let nearbyTileOffsets =
         
         [(-1,-1), //bottom left corner from selected tile
-         (0,-1),  //directly below
-         (1,-1),  //bottom right corner
-         (-1,0),  //directly left
-         (1,0),   //directly right
-         (-1,1),  //top left corner
-         (0,1),   //directly above
-          (1,1)]  //top right corner
+            (0,-1),  //directly below
+            (1,-1),  //bottom right corner
+            (-1,0),  //directly left
+            (1,0),   //directly right
+            (-1,1),  //top left corner
+            (0,1),   //directly above
+            (1,1)]  //top right corner
         
         for (rowOffset,columnOffset) in nearbyTileOffsets {
             
             //optional since tiles in the corners/edges could have less than 8 surrounding tiles and thus could have a nil value
             let ajacentTile:Tile? = getAjacentTileLocation(selectedTile.row+rowOffset, col: selectedTile.column+columnOffset)
-           
+            
             
             //if validAjacentTile isn't nil, add the Tile object to the nearby Tile array
             if let validAjacentTile = ajacentTile {
@@ -149,9 +141,9 @@ class GameBoard {
         if row >= 0 && row < boardSize_ && col >= 0 && col < boardSize_ {
             return tiles[row][col]
         }
-        
-        //returns a nil Tile if the location is out of bounds/the offset pointed to a nonexistant tile, 
-        //ie: the selected tile was a corner tile that would only have 3 ajacent tiles.
+            
+            //returns a nil Tile if the location is out of bounds/the offset pointed to a nonexistant tile,
+            //ie: the selected tile was a corner tile that would only have 3 ajacent tiles.
         else {
             return nil
         }
@@ -181,9 +173,9 @@ class GameBoard {
         ie:
         
         for var row = 0; index < boardSize_; ++row {
-          for var column = 0; column < boardSize_; ++column {
-                          .........
-             }
+        for var column = 0; column < boardSize_; ++column {
+        .........
+        }
         }
         
         ================
@@ -199,7 +191,5 @@ class GameBoard {
         
         
     }
-
-
-
+    
 }
